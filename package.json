@@ -1,0 +1,20 @@
+{
+  "name": "font-generator",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "start": "bun run index.ts icons/ && bun run svg:optimize && bun run svg:to-path",
+    "svg:optimize": "svgo -f ./outputs -o ./outputs",
+    "svg:to-path": "svgtofont --sources ./outputs --output ./fonts --fontName nec-icons"
+  },
+  "dependencies": {
+    "svgo": "^3.2.0",
+    "svgtofont": "^4.2.0"
+  }
+}
